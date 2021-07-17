@@ -59,7 +59,7 @@ class AvengersViewModelTest {
     fun closeDb() = database.close()
 
     @Test
-    fun insertSave() = runBlockingTest {
+    fun insertSave_saveCharacterInTheDataBase() = runBlockingTest {
 
         val character = Character(
             nameCharacter = "Thor",
