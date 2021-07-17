@@ -6,7 +6,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-private const val BASE_URL = "http://gateway.marvel.com"
+private const val BASE_URL = "https://gateway.marvel.com"
 
 class AppRetrofit {
 

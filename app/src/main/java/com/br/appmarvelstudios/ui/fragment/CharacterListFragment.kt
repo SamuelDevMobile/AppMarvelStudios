@@ -61,8 +61,10 @@ class CharacterListFragment : Fragment() {
     }
 
     private fun getAllCharacters() {
+        progressBar.visibility = View.VISIBLE
         viewModel.getAllCharacters().observe(viewLifecycleOwner, Observer { resources ->
-            resources.dados?.let { characters -> adapterCharacter.updates(characters.data.results) }
+            resources.dados?.let { characters -> progressBar.visibility = View.GONE
+                adapterCharacter.updates(characters.data.results) }
             resources.error?.let { error -> showMensseger(error) }
         })
     }

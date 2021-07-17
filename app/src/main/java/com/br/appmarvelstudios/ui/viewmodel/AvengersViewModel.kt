@@ -1,6 +1,5 @@
 package com.br.appmarvelstudios.ui.viewmodel
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -18,11 +17,6 @@ import kotlinx.coroutines.launch
 class AvengersViewModel(
     private val repository: AvengersRepository
 ) : ViewModel() {
-
-//    private val _insertCharacter = MutableLiveData<Resource<Character>>()
-//    val returnInsertCharacter: LiveData<Resource<Character>> = _insertCharacter
-//    private val _dataLoading = MutableLiveData<Boolean>()
-//    val dataLoading: LiveData<Boolean> = _dataLoading
 
     fun getAllCharacters() = MutableLiveData<Resource<HeadQuarters?>>().also { allCharacters ->
         viewModelScope.launch {
