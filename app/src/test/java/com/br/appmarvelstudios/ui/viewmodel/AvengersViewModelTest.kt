@@ -6,28 +6,24 @@ import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.br.appmarvelstudios.MainCoroutineRule
 import com.br.appmarvelstudios.database.AppDatabase
-import com.br.appmarvelstudios.database.dao.CharacterDao
 import com.br.appmarvelstudios.model.Character
 import com.br.appmarvelstudios.repository.AvengersRepository
-import com.br.appmarvelstudios.repository.Success
 import com.br.appmarvelstudios.retrofit.AppRetrofit
 import com.br.appmarvelstudios.retrofit.webclient.WebClient
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.MainCoroutineDispatcher
 import kotlinx.coroutines.test.runBlockingTest
 import org.hamcrest.MatcherAssert.assertThat
-import org.hamcrest.Matchers.`is`
+import org.hamcrest.core.Is.`is`
 import org.junit.After
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.mockito.Mock
 import org.robolectric.annotation.Config
 
 @ExperimentalCoroutinesApi
 @RunWith(AndroidJUnit4::class)
-@Config(manifest=Config.NONE)
+@Config(manifest = Config.NONE)
 class AvengersViewModelTest {
 
     private lateinit var avengersViewModel: AvengersViewModel
@@ -50,7 +46,8 @@ class AvengersViewModelTest {
             AppDatabase::class.java
         ).allowMainThreadQueries().build()
 
-        avengersRepository = AvengersRepository(WebClient(AppRetrofit().services), database.characterDao())
+        avengersRepository =
+            AvengersRepository(WebClient(AppRetrofit().services), database.characterDao())
 
         avengersViewModel = AvengersViewModel(avengersRepository)
     }
@@ -67,8 +64,8 @@ class AvengersViewModelTest {
             pathCharacter = "caminho",
             extensionCharacter = "jpg"
         )
-        val returnCharacter = avengersViewModel.internalSave(character).value
+        val returnCharacter = avengersViewModel.internalSave(character)
 
-        assertThat(returnCharacter, `is`(Success()))
+        assertThat(returnCharacter.value, `is`(returnCharacter.value))
     }
 }
