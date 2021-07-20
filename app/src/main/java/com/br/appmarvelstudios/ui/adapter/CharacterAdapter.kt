@@ -13,7 +13,7 @@ import java.util.*
 import kotlin.collections.ArrayList
 
 class CharacterAdapter(
-    private val context: Context,
+    private val context: Context?,
     private var listCharacter: MutableList<DataCharacter> = mutableListOf(),
     private var searchItemCharacter: MutableList<DataCharacter> = mutableListOf(),
     var onItemClickListener: (characterSelected: DataCharacter) -> Unit = {}
@@ -57,7 +57,7 @@ class CharacterAdapter(
             override fun publishResults(p0: CharSequence?, results: FilterResults?) {
                 listCharacter.clear()
                 listCharacter = results?.values as ArrayList<DataCharacter>
-                notifyDataSetChanged()
+                updateList()
             }
         }
     }
@@ -67,6 +67,10 @@ class CharacterAdapter(
         this.listCharacter.addAll(listCharacter)
         this.searchItemCharacter.clear()
         this.searchItemCharacter.addAll(listCharacter)
+        updateList()
+    }
+
+    fun updateList() {
         notifyDataSetChanged()
     }
 
