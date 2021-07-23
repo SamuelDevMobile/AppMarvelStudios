@@ -8,6 +8,7 @@ import com.br.appmarvelstudios.MainCoroutineRule
 import com.br.appmarvelstudios.database.AppDatabase
 import com.br.appmarvelstudios.model.Character
 import com.br.appmarvelstudios.repository.AvengersRepository
+import com.br.appmarvelstudios.repository.Success
 import com.br.appmarvelstudios.retrofit.AppRetrofit
 import com.br.appmarvelstudios.retrofit.webclient.WebClient
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -66,6 +67,6 @@ class AvengersViewModelTest {
         )
         val returnCharacter = avengersViewModel.internalSave(character)
 
-        assertThat(returnCharacter.value, `is`(returnCharacter.value))
+        assertThat(returnCharacter.value, `is`(Success()))
     }
 }
