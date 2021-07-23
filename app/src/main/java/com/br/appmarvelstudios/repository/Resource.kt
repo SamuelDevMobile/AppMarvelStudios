@@ -14,5 +14,5 @@ class Success<T>(
 class Failure<T>(
     erro: String
 ) : Resource<T>(error = erro) {
-    override fun equals(other: Any?) = dados == (other as? Failure<*>)?.error
+    override fun equals(other: Any?) = error == (other as? Failure<*>)?.error
 }
